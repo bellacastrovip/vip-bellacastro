@@ -69,20 +69,17 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--gray-50); color: var(--gray-800); margin: 0; line-height: 1.6; }
         .container { max-width: 680px; margin: 0 auto; padding: 1rem; }
         
-        /* Profile Section */
         .profile-section { position: relative; margin-bottom: 60px; }
         .banner { height: 200px; border-radius: var(--radius); overflow: hidden; position: relative; }
         .banner-image { width: 100%; height: 100%; object-fit: cover; }
         .profile-image-container { position: absolute; left: 50%; top: 200px; transform: translate(-50%, -50%); width: 120px; height: 120px; border-radius: 50%; border: 5px solid var(--gray-50); box-shadow: var(--shadow); overflow: hidden; }
         .profile-image { width: 100%; height: 100%; object-fit: cover; }
         
-        /* Info & Plans */
         .profile-info { text-align: center; padding-top: 70px; margin-bottom: 1.5rem; }
         .profile-info h1 { font-size: 1.75rem; font-weight: 700; margin: 0 0 0.25rem; }
         .profile-info .username { color: var(--gray-500); margin-bottom: 0.5rem; }
         .profile-info .bio { max-width: 90%; margin: 0 auto 1.5rem; }
         
-        /* Subscription Plans Card */
         .card { background-color: white; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1.5rem; overflow: hidden; }
         .card-content { padding: 1.5rem; }
         .badge { background-color: var(--orange-100); color: var(--orange-700); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
@@ -93,38 +90,13 @@
         .primary-button { background: linear-gradient(to right, var(--orange-400), var(--orange-600)); color: white; }
         .promotions-title { margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1rem; color: var(--gray-600); font-weight: 600; }
 
-        /* Post Card */
-        .post-card { background-color: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
-        .post-header { 
-            display: flex; 
-            align-items: center; 
-            padding: 0.75rem 1rem; 
-            border-bottom: 1px solid var(--gray-100); 
-        }
-        .post-avatar { width: 40px; height: 40px; border-radius: 50%; }
-        .post-user-info { 
-            margin-left: 0.75rem; 
-            flex: 1; 
-            min-width: 0; 
-        }
-        .post-user-info h4 { 
-            margin: 0; 
-            font-size: 1rem; 
-            font-weight: 600; 
+        .post-card { 
+            background-color: white; 
+            border-radius: var(--radius); 
+            box-shadow: var(--shadow); 
             overflow: hidden; 
-            text-overflow: ellipsis; 
-            white-space: nowrap; 
-        }
-        .post-user-info p { 
-            margin: 0; 
-            font-size: 0.875rem; 
-            color: var(--gray-500); 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
-            white-space: nowrap; 
         }
         
-        /* GRID 2 VÍDEOS LADO A LADO */
         .posts-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -132,8 +104,14 @@
             margin-bottom: 2rem;
         }
 
-        /* Video Content */
-        .post-video-container { position: relative; width: 100%; aspect-ratio: 9 / 16; overflow: hidden; background: #000; cursor: pointer; }
+        .post-video-container { 
+            position: relative; 
+            width: 100%; 
+            aspect-ratio: 9 / 16; 
+            overflow: hidden; 
+            background: #000; 
+            cursor: pointer; 
+        }
         .post-video { width: 100%; height: 100%; object-fit: cover; }
         .video-overlay { 
             position: absolute; inset: 0; 
@@ -169,27 +147,12 @@
             display: none !important; 
         }
 
-        /* RESPONSIVO - CORREÇÃO DE CORTE NO ANDROID/IOS */
         @media (max-width: 480px) {
-            .post-header {
-                padding: 0.55rem 0.75rem;
-            }
-            .post-avatar {
-                width: 35px;
-                height: 35px;
-            }
-            .post-user-info h4 {
-                font-size: 0.95rem;
-            }
-            .post-user-info p {
-                font-size: 0.82rem;
-            }
             .posts-grid {
                 gap: 1rem;
             }
         }
 
-        /* BENEFÍCIOS */
         .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
         .benefit-item { 
             display: flex; align-items: flex-start; gap: 12px; 
@@ -201,11 +164,9 @@
         .benefit-item.visible { opacity: 1; transform: translateY(0); }
         .benefit-item span { color: var(--orange-600); font-size: 1.5rem; margin-top: 2px; }
 
-        /* PROVA SOCIAL */
         .testimonial { background: white; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); margin-bottom: 1rem; }
         .stars { color: #fbbf24; font-size: 1.3rem; }
 
-        /* URGÊNCIA */
         .urgency-bar {
             background: linear-gradient(to right, #c2410c, #f97316);
             color: white; text-align: center; padding: 0.8rem;
@@ -260,15 +221,11 @@
             Toque no vídeo ou no botão laranja para ver a prévia 🔥
         </div>
 
-        <!-- GRID COM 6 VÍDEOS -->
+        <!-- GRID COM 6 VÍDEOS (SEM REPETIÇÃO DE CABEÇALHO) -->
         <div class="posts-grid">
 
             <!-- Vídeo 1 -->
             <div class="post-card">
-                <div class="post-header">
-                    <img src="https://media.bio.site/sites/3cb8e774-e870-425b-89f9-51241f40c659/8jX2ZYAWsue6RVjDF4C9mJ.jpg" alt="Bella Castro" class="post-avatar">
-                    <div class="post-user-info"><h4>Bella Castro</h4><p>@bellacastro</p></div>
-                </div>
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/ft1bej.MOV" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
                     <div class="video-overlay"></div>
@@ -280,10 +237,6 @@
 
             <!-- Vídeo 2 -->
             <div class="post-card">
-                <div class="post-header">
-                    <img src="https://media.bio.site/sites/3cb8e774-e870-425b-89f9-51241f40c659/8jX2ZYAWsue6RVjDF4C9mJ.jpg" alt="Bella Castro" class="post-avatar">
-                    <div class="post-user-info"><h4>Bella Castro</h4><p>@bellacastro</p></div>
-                </div>
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/42gnh4.mp4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
                     <div class="video-overlay"></div>
@@ -295,10 +248,6 @@
 
             <!-- Vídeo 3 -->
             <div class="post-card">
-                <div class="post-header">
-                    <img src="https://media.bio.site/sites/3cb8e774-e870-425b-89f9-51241f40c659/8jX2ZYAWsue6RVjDF4C9mJ.jpg" alt="Bella Castro" class="post-avatar">
-                    <div class="post-user-info"><h4>Bella Castro</h4><p>@bellacastro</p></div>
-                </div>
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/ay8jws.mp4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
                     <div class="video-overlay"></div>
@@ -310,10 +259,6 @@
 
             <!-- Vídeo 4 -->
             <div class="post-card">
-                <div class="post-header">
-                    <img src="https://media.bio.site/sites/3cb8e774-e870-425b-89f9-51241f40c659/8jX2ZYAWsue6RVjDF4C9mJ.jpg" alt="Bella Castro" class="post-avatar">
-                    <div class="post-user-info"><h4>Bella Castro</h4><p>@bellacastro</p></div>
-                </div>
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/7t7gqg.mp4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
                     <div class="video-overlay"></div>
@@ -325,10 +270,6 @@
 
             <!-- Vídeo 5 -->
             <div class="post-card">
-                <div class="post-header">
-                    <img src="https://media.bio.site/sites/3cb8e774-e870-425b-89f9-51241f40c659/8jX2ZYAWsue6RVjDF4C9mJ.jpg" alt="Bella Castro" class="post-avatar">
-                    <div class="post-user-info"><h4>Bella Castro</h4><p>@bellacastro</p></div>
-                </div>
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/2afw5j.MP4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
                     <div class="video-overlay"></div>
@@ -340,10 +281,6 @@
 
             <!-- Vídeo 6 -->
             <div class="post-card">
-                <div class="post-header">
-                    <img src="https://media.bio.site/sites/3cb8e774-e870-425b-89f9-51241f40c659/8jX2ZYAWsue6RVjDF4C9mJ.jpg" alt="Bella Castro" class="post-avatar">
-                    <div class="post-user-info"><h4>Bella Castro</h4><p>@bellacastro</p></div>
-                </div>
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/g07wvc.MOV" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
                     <div class="video-overlay"></div>
@@ -391,10 +328,11 @@
             </div>
         </div>
 
-        <!-- GARANTIA + URGÊNCIA -->
-        <div class="urgency-bar">🔥 OFERTA POR TEMPO LIMITADO   ACABA EM 48 HORAS!</div>
+        <!-- Urgência com contador -->
+        <div id="countdown" class="urgency-bar">Oferta por tempo limitado acaba em: <span id="timer">48h 00min</span> 🔥</div>
+
         <div class="info-box" style="background:#f0fdf4; border-color:#16a34a; color:#166534;">
-            ✅ Garantia de 7 dias: Se não amar o conteúdo, você pode pedir reembolso total do seu dinheiro
+            ✅ Garantia de 7 dias: dinheiro 100% de volta se não amar
         </div>
 
         <!-- Subscription Plans -->
@@ -414,7 +352,7 @@
             </div>
         </div>
 
-        <div class="info-box">Ao comprar você recebe tudo direto no seu WhatsApp em menos de 2 minutos! 📱</div>
+        <div class="info-box">Receba tudo no WhatsApp em menos de 2 minutos! 📱</div>
     </main>
 
     <footer>
@@ -480,6 +418,21 @@
                 });
             }, { threshold: 0.25 });
             benefitItems.forEach(item => observer.observe(item));
+
+            // Contador de 48 horas
+            let countDownDate = new Date().getTime() + (48 * 60 * 60 * 1000);
+            let timer = setInterval(function() {
+                let now = new Date().getTime();
+                let distance = countDownDate - now;
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s";
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("timer").innerHTML = "ACABOU!";
+                }
+            }, 1000);
         });
     </script>
 </body>
