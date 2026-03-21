@@ -116,7 +116,7 @@
         .video-overlay { 
             position: absolute; inset: 0; 
             display: flex; justify-content: center; align-items: center; 
-            background-color: rgba(0,0,0,0.40); 
+            background-color: rgba(0,0,0,0.50); 
             transition: opacity 0.3s;
         }
         .video-overlay.hidden { opacity: 0; pointer-events: none; }
@@ -126,24 +126,35 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 110px;
-            height: 110px;
-            background-color: rgba(251, 146, 60, 0.95);
-            border: 5px solid white;
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: none;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             z-index: 10;
-            box-shadow: 0 0 30px rgba(251, 146, 60, 0.8);
             touch-action: manipulation;
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-shadow: 0 0 10px rgba(0,0,0,0.8);
+            letter-spacing: 1px;
         }
+        /* Esconde o ícone antigo */
         .play-button svg {
-            fill: white;
-            width: 60px;
-            height: 60px;
+            display: none;
         }
+        /* Adiciona o texto Clique Aqui */
+        .play-button::after {
+            content: "CLIQUE AQUI";
+            border: 2px solid white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+        }
+        
         .play-button.hidden { 
             display: none !important; 
         }
@@ -170,7 +181,6 @@
             line-height: 1.3;
         }
         
-        /* Quebra de linha apenas no mobile */
         .mobile-br { display: none; }
 
         .info-box {
@@ -228,7 +238,7 @@
         </div>
 
         <div class="aviso-previa">
-            Toque no vídeo ou no botão laranja para ver a prévia 🔥
+            Toque no vídeo e aguarde alguns segundos para ele reproduzir 🔥
         </div>
 
         <div class="posts-grid">
@@ -426,7 +436,6 @@
             }, { threshold: 0.25 });
             benefitItems.forEach(item => observer.observe(item));
 
-            // Contador ajustado para 23h 52m 4s conforme solicitado
             let initialHours = 23, initialMinutes = 52, initialSeconds = 4;
             let totalSeconds = (initialHours * 3600) + (initialMinutes * 60) + initialSeconds;
 
