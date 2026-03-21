@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="assets/b5e3e1b1ce59430b.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- META PIXEL -->
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -21,7 +20,6 @@
         fbq('track', 'PageView');
     </script>
 
-    <!-- UTMIFY -->
     <script>
         window.pixelId = "2156857524851371";
         var a = document.createElement("script");
@@ -110,7 +108,9 @@
             aspect-ratio: 9 / 16; 
             overflow: hidden; 
             background: #000; 
-            cursor: pointer; 
+            cursor: pointer;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
         .post-video { width: 100%; height: 100%; object-fit: cover; }
         .video-overlay { 
@@ -137,6 +137,7 @@
             cursor: pointer;
             z-index: 10;
             box-shadow: 0 0 30px rgba(251, 146, 60, 0.8);
+            touch-action: manipulation;
         }
         .play-button svg {
             fill: white;
@@ -145,12 +146,6 @@
         }
         .play-button.hidden { 
             display: none !important; 
-        }
-
-        @media (max-width: 480px) {
-            .posts-grid {
-                gap: 1rem;
-            }
         }
 
         .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -172,12 +167,21 @@
             color: white; text-align: center; padding: 0.8rem;
             font-weight: 700; font-size: 1.05rem; border-radius: var(--radius);
             margin-bottom: 1rem;
+            line-height: 1.3;
         }
+        
+        /* Quebra de linha apenas no mobile */
+        .mobile-br { display: none; }
+
         .info-box {
-            background-color: var(--orange-100); color: var(--orange-700);
-            border-radius: var(--radius); padding: 1.2rem 1.5rem;
-            margin: 1.5rem 0; text-align: center; font-weight: 600;
-            border: 1px solid var(--orange-400);
+            background-color: #f0fdf4; 
+            color: #166534;
+            border: 1px solid #16a34a;
+            border-radius: var(--radius); 
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0; 
+            text-align: center; 
+            font-weight: 600;
         }
 
         .aviso-previa {
@@ -187,6 +191,12 @@
             margin: 1.5rem 0; text-align: center; font-weight: 600;
             font-size: 1.1rem; line-height: 1.4;
             box-shadow: 0 3px 10px rgba(249, 115, 22, 0.2);
+        }
+
+        @media (max-width: 480px) {
+            .posts-grid { gap: 1rem; }
+            .mobile-br { display: block; }
+            .urgency-bar { font-size: 1rem; padding: 1rem 0.5rem; }
         }
 
         @keyframes pulse {
@@ -221,10 +231,7 @@
             Toque no vídeo ou no botão laranja para ver a prévia 🔥
         </div>
 
-        <!-- GRID COM 6 VÍDEOS (SEM REPETIÇÃO DE CABEÇALHO) -->
         <div class="posts-grid">
-
-            <!-- Vídeo 1 -->
             <div class="post-card">
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/ft1bej.MOV" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
@@ -234,8 +241,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Vídeo 2 -->
             <div class="post-card">
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/7dh6bd.mp4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
@@ -245,8 +250,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Vídeo 3 -->
             <div class="post-card">
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/ay8jws.mp4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
@@ -256,8 +259,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Vídeo 4 -->
             <div class="post-card">
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/tj0eqr.MP4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
@@ -267,8 +268,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Vídeo 5 -->
             <div class="post-card">
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/2afw5j.MP4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
@@ -278,8 +277,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Vídeo 6 -->
             <div class="post-card">
                 <div class="post-video-container">
                     <video src="https://files.catbox.moe/g07wvc.MOV" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
@@ -289,10 +286,8 @@
                     </button>
                 </div>
             </div>
-
         </div>
 
-        <!-- BENEFÍCIOS -->
         <div class="card">
             <div class="card-content">
                 <h3 style="text-align:center; color:var(--orange-700); margin-bottom:1.5rem;">Por que milhares de homens estão amando o VIP da Bella?</h3>
@@ -306,7 +301,6 @@
             </div>
         </div>
 
-        <!-- PROVA SOCIAL -->
         <div class="card">
             <div class="card-content">
                 <h3 style="text-align:center; color:var(--orange-700); margin-bottom:1.2rem;">O que os clientes estão dizendo</h3>
@@ -328,14 +322,24 @@
             </div>
         </div>
 
-        <!-- Urgência com contador -->
-        <div id="countdown" class="urgency-bar">Oferta por tempo limitado acaba em: <span id="timer">48h 00min</span> 🔥</div>
+        <div id="countdown" class="urgency-bar">
+            Oferta por tempo limitado <br class="mobile-br"> acaba em: <span id="timer">23h 52m 04s</span> 🔥
+        </div>
 
-        <div class="info-box" style="background:#f0fdf4; border-color:#16a34a; color:#166534;">
+        <div class="info-box">
             ✅ Garantia de 7 dias: Se não amar o conteúdo, você pode pedir reembolso total do seu dinheiro
         </div>
 
-        <!-- Subscription Plans -->
+        <div class="post-card" style="margin-bottom: 1.5rem;">
+            <div class="post-video-container" style="aspect-ratio: auto; min-height: 250px;">
+                <video src="https://files.catbox.moe/5gxtir.mp4" class="post-video" controls preload="metadata" playsinline webkit-playsinline="true"></video>
+                <div class="video-overlay"></div>
+                <button class="play-button">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+            </div>
+        </div>
+
         <div id="planos" class="card">
             <div class="card-content">
                 <p class="badge">MAIS POPULAR 🔥🔥</p>
@@ -373,21 +377,23 @@
                 overlay.classList.remove('hidden');
                 playButton.classList.remove('hidden');
 
-                function playVideo() {
-                    playButton.classList.add('hidden');
-                    overlay.classList.add('hidden');
+                function playVideo(e) {
+                    if (e) e.preventDefault();
                     if (video.paused) {
                         video.play().catch(err => console.log("Erro ao reproduzir:", err));
                     }
+                    playButton.classList.add('hidden');
+                    overlay.classList.add('hidden');
                 }
 
                 playButton.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    playVideo();
+                    playVideo(e);
                 });
 
-                container.addEventListener('click', () => {
-                    playVideo();
+                container.addEventListener('click', (e) => {
+                    if (!video.paused && video.hasAttribute('controls')) return;
+                    playVideo(e);
                 });
 
                 video.addEventListener('playing', () => {
@@ -396,8 +402,10 @@
                 });
 
                 video.addEventListener('pause', () => {
-                    playButton.classList.remove('hidden');
-                    overlay.classList.remove('hidden');
+                    if (!video.hasAttribute('controls')) {
+                        playButton.classList.remove('hidden');
+                        overlay.classList.remove('hidden');
+                    }
                 });
 
                 video.addEventListener('ended', () => {
@@ -406,7 +414,6 @@
                 });
             });
 
-            // Animação dos benefícios
             const benefitItems = document.querySelectorAll('.benefit-item');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
@@ -419,19 +426,23 @@
             }, { threshold: 0.25 });
             benefitItems.forEach(item => observer.observe(item));
 
-            // Contador de 48 horas
-            let countDownDate = new Date().getTime() + (48 * 60 * 60 * 1000);
+            // Contador ajustado para 23h 52m 4s conforme solicitado
+            let initialHours = 23, initialMinutes = 52, initialSeconds = 4;
+            let totalSeconds = (initialHours * 3600) + (initialMinutes * 60) + initialSeconds;
+
             let timer = setInterval(function() {
-                let now = new Date().getTime();
-                let distance = countDownDate - now;
-                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s";
-                if (distance < 0) {
+                if (totalSeconds <= 0) {
                     clearInterval(timer);
                     document.getElementById("timer").innerHTML = "ACABOU!";
+                    return;
                 }
+
+                let h = Math.floor(totalSeconds / 3600);
+                let m = Math.floor((totalSeconds % 3600) / 60);
+                let s = totalSeconds % 60;
+
+                document.getElementById("timer").innerHTML = h + "h " + m + "m " + s + "s";
+                totalSeconds--;
             }, 1000);
         });
     </script>
