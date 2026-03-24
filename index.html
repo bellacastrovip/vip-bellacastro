@@ -142,11 +142,9 @@
             text-shadow: 0 0 10px rgba(0,0,0,0.8);
             letter-spacing: 1px;
         }
-        /* Esconde o ícone antigo */
         .play-button svg {
             display: none;
         }
-        /* Adiciona o texto Clique Aqui */
         .play-button::after {
             content: "CLIQUE AQUI";
             border: 2px solid white;
@@ -170,9 +168,6 @@
         .benefit-item.visible { opacity: 1; transform: translateY(0); }
         .benefit-item span { color: var(--orange-600); font-size: 1.5rem; margin-top: 2px; }
 
-        .testimonial { background: white; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); margin-bottom: 1rem; }
-        .stars { color: #fbbf24; font-size: 1.3rem; }
-
         .urgency-bar {
             background: linear-gradient(to right, #c2410c, #f97316);
             color: white; text-align: center; padding: 0.8rem;
@@ -194,25 +189,64 @@
             font-weight: 600;
         }
 
+        /* ===== BOTÃO AVISO-PREVIAS AJUSTADO (MENOR) ===== */
         .aviso-previa {
-            background: linear-gradient(to bottom, var(--orange-50), #fed7aa);
-            color: var(--orange-700); border: 2px solid var(--orange-500);
-            border-radius: var(--radius); padding: 1.2rem 1.5rem;
-            margin: 1.5rem 0; text-align: center; font-weight: 600;
-            font-size: 1.1rem; line-height: 1.4;
-            box-shadow: 0 3px 10px rgba(249, 115, 22, 0.2);
+            background: linear-gradient(to right, var(--orange-400), var(--orange-600));
+            color: white;
+            border: 3px solid rgba(255,255,255,0.4);
+            border-radius: 9999px;
+            padding: 0.95rem 1.75rem;
+            margin: 1.8rem auto;
+            max-width: 88%;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.22rem;
+            line-height: 1.35;
+            box-shadow: 0 12px 20px -5px rgba(249, 115, 22, 0.45),
+                        0 4px 8px -2px rgba(249, 115, 22, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .aviso-previa:hover {
+            transform: scale(1.04);
+            box-shadow: 0 15px 25px -5px rgba(249, 115, 22, 0.55);
+        }
+        .hand-emoji {
+            font-size: 1.85rem;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .aviso-previa span {
+            flex-shrink: 0;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.7); }
+            70% { box-shadow: 0 0 0 18px rgba(251, 146, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         @media (max-width: 480px) {
             .posts-grid { gap: 1rem; }
             .mobile-br { display: block; }
             .urgency-bar { font-size: 1rem; padding: 1rem 0.5rem; }
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.7); }
-            70% { box-shadow: 0 0 0 14px rgba(251, 146, 60, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0); }
+            .aviso-previa { 
+                font-size: 1.15rem; 
+                padding: 0.85rem 1.5rem; 
+                max-width: 92%;
+            }
+            .hand-emoji { font-size: 1.75rem; }
         }
 
         footer { padding: 2rem 1rem; background-color: transparent; }
@@ -237,8 +271,10 @@
             </div>
         </div>
 
+        <!-- BOTÃO AJUSTADO (AGORA MAIS COMPACTO) -->
         <div class="aviso-previa">
-            Toque no vídeo e aguarde alguns segundos para ele reproduzir 🔥
+            <span class="hand-emoji">👇</span>
+            TOQUE NO VÍDEO E AGUARDE ALGUNS SEGUNDOS
         </div>
 
         <div class="posts-grid">
@@ -300,34 +336,12 @@
 
         <div class="card">
             <div class="card-content">
-                <h3 style="text-align:center; color:var(--orange-700); margin-bottom:1.5rem;">Por que milhares de homens estão amando o VIP da Bella?</h3>
+                <h3 style="text-align:center; color:var(--orange-700); margin-bottom:1.5rem;">O que você vai receber no VIP:</h3>
                 <div class="benefits-grid">
                     <div class="benefit-item"><span>✅</span><div><strong>Vídeos em Full HD</strong><br>nunca vistos nas redes sociais</div></div>
                     <div class="benefit-item"><span>✅</span><div><strong>Atualizações toda semana</strong><br>conteúdo novo direto no WhatsApp</div></div>
                     <div class="benefit-item"><span>✅</span><div><strong>Entrega imediata</strong><br>em menos de 2 minutos</div></div>
                     <div class="benefit-item"><span>✅</span><div><strong>Total privacidade</strong><br>100% anônimo</div></div>
-                    <div class="benefit-item"><span>✅</span><div><strong>Suporte direto</strong><br>comigo no WhatsApp</div></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-content">
-                <h3 style="text-align:center; color:var(--orange-700); margin-bottom:1.2rem;">O que os clientes estão dizendo</h3>
-                <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p style="margin:12px 0;">“Comprei o pack de 40 vídeos ontem e cara... é absurdo de bom! A Bella é perfeita.”</p>
-                    <strong>— Lucas S., São Paulo</strong>
-                </div>
-                <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p style="margin:12px 0;">“O melhor investimento de R$19,90 da minha vida. Entrega instantânea, qualidade top e a Bella responde no Whats. 10/10”</p>
-                    <strong>— Matheus R., Rio Grande do Sul</strong>
-                </div>
-                <div class="testimonial">
-                    <div class="stars">★★★★★</div>
-                    <p style="margin:12px 0;">“Já assinei o acesso permanente. Vale cada centavo. Atualizações constantes e tudo privado. Recomendo demais!”</p>
-                    <strong>— Pedro A., Minas Gerais</strong>
                 </div>
             </div>
         </div>
@@ -337,7 +351,7 @@
         </div>
 
         <div class="info-box">
-            ✅ Garantia de 7 dias: Se não amar o conteúdo, você pode pedir reembolso total do seu dinheiro
+            🛡️ Garantia de 7 dias: Se não gostar dos conteúdos, você pode pedir reembolso total do seu dinheiro
         </div>
 
         <div class="post-card" style="margin-bottom: 1.5rem;">
