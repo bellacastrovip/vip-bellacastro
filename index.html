@@ -6,7 +6,7 @@
     <title>VIP Bella Castro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/b5e3e1b1ce59430b.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -111,13 +111,22 @@
             background: #000; 
         }
         .post-video { width: 100%; height: 100%; object-fit: cover; }
-        .video-overlay { 
-            position: absolute; inset: 0; 
-            display: none; 
-        }
         
-        .play-button {
-            display: none !important;
+        /* NOVO ESTILO PARA O VÍDEO COM CLIQUE */
+        .custom-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            cursor: pointer;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            letter-spacing: -1px;
         }
 
         .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -162,6 +171,7 @@
             .posts-grid { gap: 1rem; }
             .mobile-br { display: block; }
             .urgency-bar { font-size: 1rem; padding: 1rem 0.5rem; }
+            .custom-overlay { font-size: 2rem; }
         }
 
         footer { padding: 2rem 1rem; background-color: transparent; }
@@ -187,36 +197,12 @@
         </div>
 
         <div class="posts-grid">
-            <div class="post-card">
-                <div class="post-video-container">
-                    <video src="https://files.catbox.moe/ft1bej.MOV" class="post-video" preload="auto" loop muted playsinline autoplay></video>
-                </div>
-            </div>
-            <div class="post-card">
-                <div class="post-video-container">
-                    <video src="https://files.catbox.moe/7dh6bd.mp4" class="post-video" preload="auto" loop muted playsinline autoplay></video>
-                </div>
-            </div>
-            <div class="post-card">
-                <div class="post-video-container">
-                    <video src="https://files.catbox.moe/ay8jws.mp4" class="post-video" preload="auto" loop muted playsinline autoplay></video>
-                </div>
-            </div>
-            <div class="post-card">
-                <div class="post-video-container">
-                    <video src="https://files.catbox.moe/tj0eqr.MP4" class="post-video" preload="auto" loop muted playsinline autoplay></video>
-                </div>
-            </div>
-            <div class="post-card">
-                <div class="post-video-container">
-                    <video src="https://files.catbox.moe/2afw5j.MP4" class="post-video" preload="auto" loop muted playsinline autoplay></video>
-                </div>
-            </div>
-            <div class="post-card">
-                <div class="post-video-container">
-                    <video src="https://files.catbox.moe/g07wvc.MOV" class="post-video" preload="auto" loop muted playsinline autoplay></video>
-                </div>
-            </div>
+            <div class="post-card"><div class="post-video-container"><video src="https://files.catbox.moe/ft1bej.MOV" class="post-video" preload="auto" loop muted playsinline autoplay></video></div></div>
+            <div class="post-card"><div class="post-video-container"><video src="https://files.catbox.moe/7dh6bd.mp4" class="post-video" preload="auto" loop muted playsinline autoplay></video></div></div>
+            <div class="post-card"><div class="post-video-container"><video src="https://files.catbox.moe/ay8jws.mp4" class="post-video" preload="auto" loop muted playsinline autoplay></video></div></div>
+            <div class="post-card"><div class="post-video-container"><video src="https://files.catbox.moe/tj0eqr.MP4" class="post-video" preload="auto" loop muted playsinline autoplay></video></div></div>
+            <div class="post-card"><div class="post-video-container"><video src="https://files.catbox.moe/2afw5j.MP4" class="post-video" preload="auto" loop muted playsinline autoplay></video></div></div>
+            <div class="post-card"><div class="post-video-container"><video src="https://files.catbox.moe/g07wvc.MOV" class="post-video" preload="auto" loop muted playsinline autoplay></video></div></div>
         </div>
 
         <div class="card">
@@ -240,8 +226,9 @@
         </div>
 
         <div class="post-card" style="margin-bottom: 1.5rem;">
-            <div class="post-video-container" style="aspect-ratio: auto; min-height: 250px;">
-                <video src="https://files.catbox.moe/5gxtir.mp4" class="post-video" controls preload="metadata" playsinline></video>
+            <div id="video-container-main" class="post-video-container" style="aspect-ratio: auto; min-height: 400px;">
+                <div id="video-overlay" class="custom-overlay">CLIQUE AQUI</div>
+                <video id="main-video" src="https://files.catbox.moe/5gxtir.mp4" class="post-video" controls preload="metadata" playsinline></video>
             </div>
         </div>
 
@@ -273,10 +260,19 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Tenta dar play automático apenas nos vídeos da grade (que estão mudos)
+            // Controle do vídeo principal com overlay
+            const overlay = document.getElementById('video-overlay');
+            const mainVideo = document.getElementById('main-video');
+
+            overlay.addEventListener('click', () => {
+                overlay.style.display = 'none'; // Esconde o fundo preto e texto
+                mainVideo.play(); // Inicia o vídeo
+            });
+
+            // Autoplay da grade de vídeos (mudos)
             const gridVideos = document.querySelectorAll('.posts-grid video');
             gridVideos.forEach(v => {
-                v.play().catch(() => console.log("Autoplay bloqueado pelo navegador"));
+                v.play().catch(() => console.log("Autoplay bloqueado"));
             });
 
             // Animação dos benefícios
