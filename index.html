@@ -100,6 +100,7 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 1.2rem;
             margin-bottom: 2rem;
+            margin-top: 1rem;
         }
 
         .post-video-container { 
@@ -108,53 +109,15 @@
             aspect-ratio: 9 / 16; 
             overflow: hidden; 
             background: #000; 
-            cursor: pointer;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
         }
         .post-video { width: 100%; height: 100%; object-fit: cover; }
         .video-overlay { 
             position: absolute; inset: 0; 
-            display: flex; justify-content: center; align-items: center; 
-            background-color: rgba(0,0,0,0.50); 
-            transition: opacity 0.3s;
+            display: none; 
         }
-        .video-overlay.hidden { opacity: 0; pointer-events: none; }
         
         .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            border: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 10;
-            touch-action: manipulation;
-            color: white;
-            font-weight: 800;
-            font-size: 1.1rem;
-            text-shadow: 0 0 10px rgba(0,0,0,0.8);
-            letter-spacing: 1px;
-        }
-        .play-button svg {
-            display: none;
-        }
-        .play-button::after {
-            content: "CLIQUE AQUI";
-            border: 2px solid white;
-            padding: 8px 12px;
-            border-radius: 8px;
-            background: rgba(0,0,0,0.3);
-        }
-        
-        .play-button.hidden { 
-            display: none !important; 
+            display: none !important;
         }
 
         .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -189,64 +152,16 @@
             font-weight: 600;
         }
 
-        /* ===== BOTÃO AVISO-PREVIAS AJUSTADO (MENOR) ===== */
-        .aviso-previa {
-            background: linear-gradient(to right, var(--orange-400), var(--orange-600));
-            color: white;
-            border: 1px solid rgba(255,255,255,0.4);
-            border-radius: 9999px;
-            padding: 0.95rem 1.75rem;
-            margin: 1.8rem auto;
-            max-width: 88%;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.22rem;
-            line-height: 1.35;
-            box-shadow: 0 12px 20px -5px rgba(249, 115, 22, 0.45),
-                        0 4px 8px -2px rgba(249, 115, 22, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            animation: pulse 2s infinite;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .aviso-previa:hover {
-            transform: scale(1.04);
-            box-shadow: 0 15px 25px -5px rgba(249, 115, 22, 0.55);
-        }
-        .hand-emoji {
-            font-size: 1.85rem;
-            display: inline-block;
-            animation: bounce 1.4s infinite ease-in-out;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        .aviso-previa span {
-            flex-shrink: 0;
-        }
-
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.7); }
             70% { box-shadow: 0 0 0 18px rgba(251, 146, 60, 0); }
             100% { box-shadow: 0 0 0 0 rgba(251, 146, 60, 0); }
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
         @media (max-width: 480px) {
             .posts-grid { gap: 1rem; }
             .mobile-br { display: block; }
             .urgency-bar { font-size: 1rem; padding: 1rem 0.5rem; }
-            .aviso-previa { 
-                font-size: 1.15rem; 
-                padding: 0.85rem 1.5rem; 
-                max-width: 92%;
-            }
-            .hand-emoji { font-size: 1.75rem; }
         }
 
         footer { padding: 2rem 1rem; background-color: transparent; }
@@ -271,65 +186,35 @@
             </div>
         </div>
 
-        <!-- BOTÃO AJUSTADO (AGORA MAIS COMPACTO) -->
-        <div class="aviso-previa">
-            <span class="hand-emoji">👇</span>
-            Toque no vídeo e aguarde alguns segundos
-        </div>
-
         <div class="posts-grid">
             <div class="post-card">
                 <div class="post-video-container">
-                    <video src="https://files.catbox.moe/ft1bej.MOV" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
-                    <div class="video-overlay"></div>
-                    <button class="play-button">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
+                    <video src="https://files.catbox.moe/ft1bej.MOV" class="post-video" preload="auto" loop muted playsinline autoplay></video>
                 </div>
             </div>
             <div class="post-card">
                 <div class="post-video-container">
-                    <video src="https://files.catbox.moe/7dh6bd.mp4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
-                    <div class="video-overlay"></div>
-                    <button class="play-button">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
+                    <video src="https://files.catbox.moe/7dh6bd.mp4" class="post-video" preload="auto" loop muted playsinline autoplay></video>
                 </div>
             </div>
             <div class="post-card">
                 <div class="post-video-container">
-                    <video src="https://files.catbox.moe/ay8jws.mp4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
-                    <div class="video-overlay"></div>
-                    <button class="play-button">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
+                    <video src="https://files.catbox.moe/ay8jws.mp4" class="post-video" preload="auto" loop muted playsinline autoplay></video>
                 </div>
             </div>
             <div class="post-card">
                 <div class="post-video-container">
-                    <video src="https://files.catbox.moe/tj0eqr.MP4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
-                    <div class="video-overlay"></div>
-                    <button class="play-button">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
+                    <video src="https://files.catbox.moe/tj0eqr.MP4" class="post-video" preload="auto" loop muted playsinline autoplay></video>
                 </div>
             </div>
             <div class="post-card">
                 <div class="post-video-container">
-                    <video src="https://files.catbox.moe/2afw5j.MP4" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
-                    <div class="video-overlay"></div>
-                    <button class="play-button">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
+                    <video src="https://files.catbox.moe/2afw5j.MP4" class="post-video" preload="auto" loop muted playsinline autoplay></video>
                 </div>
             </div>
             <div class="post-card">
                 <div class="post-video-container">
-                    <video src="https://files.catbox.moe/g07wvc.MOV" class="post-video" preload="auto" loop muted playsinline webkit-playsinline="true"></video>
-                    <div class="video-overlay"></div>
-                    <button class="play-button">
-                        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </button>
+                    <video src="https://files.catbox.moe/g07wvc.MOV" class="post-video" preload="auto" loop muted playsinline autoplay></video>
                 </div>
             </div>
         </div>
@@ -341,7 +226,7 @@
                     <div class="benefit-item"><span>✅</span><div><strong>Vídeos em Full HD</strong><br>nunca vistos nas redes sociais</div></div>
                     <div class="benefit-item"><span>✅</span><div><strong>Atualizações toda semana</strong><br>conteúdo novo direto no WhatsApp</div></div>
                     <div class="benefit-item"><span>✅</span><div><strong>Entrega imediata</strong><br>em menos de 2 minutos</div></div>
-                    <div class="benefit-item"><span>✅</span><div><strong>Total privacidade</strong><br>100% anônimo</div></div>
+                    <div class="benefit-item"><span>✅</span><div><strong>Total privacidade</strong><br>sigilo total na sua fatura do cartão</div></div>
                 </div>
             </div>
         </div>
@@ -356,11 +241,7 @@
 
         <div class="post-card" style="margin-bottom: 1.5rem;">
             <div class="post-video-container" style="aspect-ratio: auto; min-height: 250px;">
-                <video src="https://files.catbox.moe/5gxtir.mp4" class="post-video" controls preload="metadata" playsinline webkit-playsinline="true"></video>
-                <div class="video-overlay"></div>
-                <button class="play-button">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </button>
+                <video src="https://files.catbox.moe/5gxtir.mp4" class="post-video" controls preload="metadata" playsinline></video>
             </div>
         </div>
 
@@ -392,52 +273,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll('.post-video-container').forEach(container => {
-                const video = container.querySelector('.post-video');
-                const playButton = container.querySelector('.play-button');
-                const overlay = container.querySelector('.video-overlay');
-
-                video.pause();
-                overlay.classList.remove('hidden');
-                playButton.classList.remove('hidden');
-
-                function playVideo(e) {
-                    if (e) e.preventDefault();
-                    if (video.paused) {
-                        video.play().catch(err => console.log("Erro ao reproduzir:", err));
-                    }
-                    playButton.classList.add('hidden');
-                    overlay.classList.add('hidden');
-                }
-
-                playButton.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    playVideo(e);
-                });
-
-                container.addEventListener('click', (e) => {
-                    if (!video.paused && video.hasAttribute('controls')) return;
-                    playVideo(e);
-                });
-
-                video.addEventListener('playing', () => {
-                    playButton.classList.add('hidden');
-                    overlay.classList.add('hidden');
-                });
-
-                video.addEventListener('pause', () => {
-                    if (!video.hasAttribute('controls')) {
-                        playButton.classList.remove('hidden');
-                        overlay.classList.remove('hidden');
-                    }
-                });
-
-                video.addEventListener('ended', () => {
-                    playButton.classList.remove('hidden');
-                    overlay.classList.remove('hidden');
-                });
+            // Tenta dar play automático apenas nos vídeos da grade (que estão mudos)
+            const gridVideos = document.querySelectorAll('.posts-grid video');
+            gridVideos.forEach(v => {
+                v.play().catch(() => console.log("Autoplay bloqueado pelo navegador"));
             });
 
+            // Animação dos benefícios
             const benefitItems = document.querySelectorAll('.benefit-item');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
@@ -450,20 +292,15 @@
             }, { threshold: 0.25 });
             benefitItems.forEach(item => observer.observe(item));
 
+            // Timer regressivo
             let initialHours = 23, initialMinutes = 52, initialSeconds = 4;
             let totalSeconds = (initialHours * 3600) + (initialMinutes * 60) + initialSeconds;
 
-            let timer = setInterval(function() {
-                if (totalSeconds <= 0) {
-                    clearInterval(timer);
-                    document.getElementById("timer").innerHTML = "ACABOU!";
-                    return;
-                }
-
+            setInterval(function() {
+                if (totalSeconds <= 0) return;
                 let h = Math.floor(totalSeconds / 3600);
                 let m = Math.floor((totalSeconds % 3600) / 60);
                 let s = totalSeconds % 60;
-
                 document.getElementById("timer").innerHTML = h + "h " + m + "m " + s + "s";
                 totalSeconds--;
             }, 1000);
