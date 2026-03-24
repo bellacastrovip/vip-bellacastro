@@ -112,7 +112,6 @@
         }
         .post-video { width: 100%; height: 100%; object-fit: cover; }
         
-        /* NOVO ESTILO PARA O VÍDEO COM CLIQUE */
         .custom-overlay {
             position: absolute;
             inset: 0;
@@ -140,15 +139,49 @@
         .benefit-item.visible { opacity: 1; transform: translateY(0); }
         .benefit-item span { color: var(--orange-600); font-size: 1.5rem; margin-top: 2px; }
 
+        /* BOTÃO DA OFERTA - ESTILO EXATAMENTE COMO NA IMAGEM */
         .urgency-bar {
-            background: linear-gradient(to right, #c2410c, #f97316);
-            color: white; text-align: center; padding: 0.8rem;
-            font-weight: 700; font-size: 1.05rem; border-radius: var(--radius);
-            margin-bottom: 1rem;
-            line-height: 1.3;
+            background: linear-gradient(to right, #fb923c, #ea580c);
+            color: white;
+            text-align: center;
+            padding: 1.2rem 1rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
         }
-        
-        .mobile-br { display: none; }
+        .urgency-bar span {
+            display: block;
+            font-size: 1.35rem;
+            margin-top: 4px;
+        }
+
+        /* === GARANTIA MAIS PROFISSIONAL (exatamente o estilo da imagem que você enviou) === */
+        .guarantee-box {
+            background-color: #f0fdf4;
+            border: 2px solid #16a34a;
+            border-radius: 9999px;
+            padding: 1.25rem 1.75rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(22, 101, 52, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .guarantee-box .icon {
+            font-size: 2.1rem;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .guarantee-box .text {
+            color: #166534;
+            font-weight: 600;
+            line-height: 1.45;
+            font-size: 1.05rem;
+        }
 
         .info-box {
             background-color: #f0fdf4; 
@@ -169,9 +202,10 @@
 
         @media (max-width: 480px) {
             .posts-grid { gap: 1rem; }
-            .mobile-br { display: block; }
-            .urgency-bar { font-size: 1rem; padding: 1rem 0.5rem; }
+            .urgency-bar { font-size: 1.1rem; padding: 1.1rem 0.8rem; }
             .custom-overlay { font-size: 2rem; }
+            .guarantee-box { padding: 1rem 1.25rem; }
+            .guarantee-box .text { font-size: 1rem; }
         }
 
         footer { padding: 2rem 1rem; background-color: transparent; }
@@ -217,12 +251,12 @@
             </div>
         </div>
 
-        <div id="countdown" class="urgency-bar">
-            Oferta por tempo limitado <br class="mobile-br"> acaba em: <span id="timer">23h 52m 04s</span> 🔥
-        </div>
-
-        <div class="info-box">
-            🛡️ Garantia de 7 dias: Se não gostar dos conteúdos, você pode pedir reembolso total do seu dinheiro
+        <!-- === GARANTIA ATUALIZADA (mais profissional, exatamente no estilo da imagem que você enviou) === -->
+        <div class="guarantee-box">
+            <div class="icon">🛡️</div>
+            <div class="text">
+                Garantia de 7 dias: Se não gostar dos conteúdos, você pode pedir reembolso total do seu dinheiro
+            </div>
         </div>
 
         <div class="post-card" style="margin-bottom: 1.5rem;">
@@ -230,6 +264,12 @@
                 <div id="video-overlay" class="custom-overlay">CLIQUE AQUI</div>
                 <video id="main-video" src="https://files.catbox.moe/5gxtir.mp4" class="post-video" controls preload="metadata" playsinline></video>
             </div>
+        </div>
+
+        <!-- BOTÃO DA OFERTA ACIMA DOS PLANOS (exatamente como na imagem) -->
+        <div id="countdown" class="urgency-bar">
+            🔥 OFERTA ACABA EM:<br>
+            <span id="timer">23h 52m 04s</span>
         </div>
 
         <div id="planos" class="card">
@@ -265,11 +305,11 @@
             const mainVideo = document.getElementById('main-video');
 
             overlay.addEventListener('click', () => {
-                overlay.style.display = 'none'; // Esconde o fundo preto e texto
-                mainVideo.play(); // Inicia o vídeo
+                overlay.style.display = 'none';
+                mainVideo.play();
             });
 
-            // Autoplay da grade de vídeos (mudos)
+            // Autoplay da grade de vídeos
             const gridVideos = document.querySelectorAll('.posts-grid video');
             gridVideos.forEach(v => {
                 v.play().catch(() => console.log("Autoplay bloqueado"));
