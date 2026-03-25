@@ -115,7 +115,7 @@
         .custom-overlay {
             position: absolute;
             inset: 0;
-            background-color: black;
+            background-color: rgba(0,0,0,0.45);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -126,6 +126,7 @@
             font-weight: 900;
             text-align: center;
             letter-spacing: -1px;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.9);
         }
 
         .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -139,7 +140,6 @@
         .benefit-item.visible { opacity: 1; transform: translateY(0); }
         .benefit-item span { color: var(--orange-600); font-size: 1.5rem; margin-top: 2px; }
 
-        /* BOTÃO DA OFERTA - ESTILO EXATAMENTE COMO NA IMAGEM */
         .urgency-bar {
             background: linear-gradient(to right, #fb923c, #ea580c);
             color: white;
@@ -158,7 +158,6 @@
             margin-top: 4px;
         }
 
-        /* === GARANTIA MAIS PROFISSIONAL (exatamente o estilo da imagem) === */
         .guarantee-box {
             background-color: #f0fdf4;
             border: 2px solid #16a34a;
@@ -167,15 +166,10 @@
             margin: 1.5rem 0;
             box-shadow: 0 2px 8px rgba(22, 101, 52, 0.1);
             display: flex;
-            align-items: center;          /* ALTERADO: agora o ícone fica perfeitamente centralizado verticalmente */
+            align-items: center;
             gap: 14px;
         }
-        .guarantee-box .icon {
-            font-size: 2.35rem;           /* levemente aumentado para ficar idêntico ao da imagem */
-            line-height: 1;
-            flex-shrink: 0;
-            /* margin-top removido para centralização perfeita */
-        }
+        .guarantee-box .icon { font-size: 2.35rem; flex-shrink: 0; }
         .guarantee-box .text {
             color: #166534;
             font-weight: 600;
@@ -207,8 +201,6 @@
             .guarantee-box { padding: 1rem 1.25rem; }
             .guarantee-box .text { font-size: 1rem; }
         }
-
-        footer { padding: 2rem 1rem; background-color: transparent; }
     </style>
 </head>
 
@@ -251,7 +243,6 @@
             </div>
         </div>
 
-        <!-- === GARANTIA ATUALIZADA (ícone do escudo agora perfeitamente centralizado) === -->
         <div class="guarantee-box">
             <div class="icon">🛡️</div>
             <div class="text">
@@ -259,14 +250,21 @@
             </div>
         </div>
 
+        <!-- === VÍDEO PRINCIPAL COM A FOTO QUE VOCÊ PEDIU (só altere o link abaixo) === -->
         <div class="post-card" style="margin-bottom: 1.5rem;">
-            <div id="video-container-main" class="post-video-container" style="aspect-ratio: auto; min-height: 400px;">
+            <div id="video-container-main" class="post-video-container" style="aspect-ratio: 9 / 16; 
+                 background-image: url('https://files.catbox.moe/3aq7xl.png'); 
+                 background-size: cover; 
+                 background-position: center center;">
+                
                 <div id="video-overlay" class="custom-overlay">CLIQUE AQUI</div>
-                <video id="main-video" src="https://files.catbox.moe/5gxtir.mp4" class="post-video" controls preload="metadata" playsinline></video>
+                
+                <!-- Vídeo que aparece depois do clique -->
+                <video id="main-video" src="https://files.catbox.moe/5gxtir.mp4" class="post-video" controls preload="metadata" playsinline style="display: none;"></video>
             </div>
         </div>
 
-        <!-- BOTÃO DA OFERTA ACIMA DOS PLANOS (exatamente como na imagem) -->
+        <!-- BOTÃO DA OFERTA ACIMA DOS PLANOS -->
         <div id="countdown" class="urgency-bar">
             🔥 OFERTA ACABA EM:<br>
             <span id="timer">23h 52m 04s</span>
@@ -300,19 +298,21 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Controle do vídeo principal com overlay
             const overlay = document.getElementById('video-overlay');
             const mainVideo = document.getElementById('main-video');
+            const container = document.getElementById('video-container-main');
 
             overlay.addEventListener('click', () => {
                 overlay.style.display = 'none';
+                container.style.backgroundImage = 'none';
+                mainVideo.style.display = 'block';
                 mainVideo.play();
             });
 
-            // Autoplay da grade de vídeos
+            // Autoplay dos vídeos da grade
             const gridVideos = document.querySelectorAll('.posts-grid video');
             gridVideos.forEach(v => {
-                v.play().catch(() => console.log("Autoplay bloqueado"));
+                v.play().catch(() => {});
             });
 
             // Animação dos benefícios
@@ -329,10 +329,8 @@
             benefitItems.forEach(item => observer.observe(item));
 
             // Timer regressivo
-            let initialHours = 23, initialMinutes = 52, initialSeconds = 4;
-            let totalSeconds = (initialHours * 3600) + (initialMinutes * 60) + initialSeconds;
-
-            setInterval(function() {
+            let totalSeconds = (23 * 3600) + (52 * 60) + 4;
+            setInterval(() => {
                 if (totalSeconds <= 0) return;
                 let h = Math.floor(totalSeconds / 3600);
                 let m = Math.floor((totalSeconds % 3600) / 60);
