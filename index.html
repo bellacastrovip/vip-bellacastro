@@ -5,21 +5,19 @@
     <meta charset="UTF-8">
     <title>VIP Bella Castro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/b5e3e1b1ce59430b.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
+    <!-- Facebook Pixel -->
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '2156857524851371');
         fbq('track', 'PageView');
     </script>
 
+    <!-- UTMify Pixel -->
     <script>
         window.pixelId = "2156857524851371";
         var a = document.createElement("script");
@@ -28,7 +26,8 @@
         a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
         document.head.appendChild(a);
     </script>
-    
+
+    <!-- Script de redirecionamento de botão voltar -->
     <script>
         const link = 'https://previas.bellacastrovip.workers.dev/';
         function setBackRedirect(url) {
@@ -250,7 +249,7 @@
             </div>
         </div>
 
-        <!-- === VÍDEO PRINCIPAL COM A FOTO QUE VOCÊ PEDIU (só altere o link abaixo) === -->
+        <!-- Vídeo principal -->
         <div class="post-card" style="margin-bottom: 1.5rem;">
             <div id="video-container-main" class="post-video-container" style="aspect-ratio: 9 / 16; 
                  background-image: url('https://files.catbox.moe/3aq7xl.png'); 
@@ -259,23 +258,24 @@
                 
                 <div id="video-overlay" class="custom-overlay">CLIQUE AQUI</div>
                 
-                <!-- Vídeo que aparece depois do clique -->
                 <video id="main-video" src="https://files.catbox.moe/5gxtir.mp4" class="post-video" controls preload="metadata" playsinline style="display: none;"></video>
             </div>
         </div>
 
-        <!-- BOTÃO DA OFERTA ACIMA DOS PLANOS -->
+        <!-- Contador de urgência -->
         <div id="countdown" class="urgency-bar">
             🔥 OFERTA ACABA EM:<br>
             <span id="timer">23h 52m 04s</span>
         </div>
 
+        <!-- Planos de assinatura -->
         <div id="planos" class="card">
             <div class="card-content">
                 <p class="badge">MAIS POPULAR 🔥🔥</p>
                 <a href="https://pay.kirvano.com/3b7854ac-393b-447f-8905-a762dc0a6389?utm_source=meta&utm_medium=cpc&utm_campaign={{campaign.id}}&utm_content={{ad.id}}&utm_term={{adset.id}}" class="subscription-link">
                     <button class="subscription-button primary-button"><strong>PACK 40 VÍDEOS -</strong> R$ 19,90</button>
                 </a>
+                
                 <h4 class="promotions-title">Promoções</h4>
                 <a href="https://pay.kirvano.com/028f5bb5-7d77-4612-aa14-43c1ee3d540f?utm_source=meta&utm_medium=cpc&utm_campaign={{campaign.id}}&utm_content={{ad.id}}&utm_term={{adset.id}}" class="subscription-link">
                     <button class="subscription-button primary-button"><strong>PACK 20 VÍDEOS -</strong> R$ 9,90</button>
@@ -298,6 +298,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Clique no vídeo principal
             const overlay = document.getElementById('video-overlay');
             const mainVideo = document.getElementById('main-video');
             const container = document.getElementById('video-container-main');
