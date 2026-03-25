@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="assets/b5e3e1b1ce59430b.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
-    <!-- ==================== META PIXEL (completo e otimizado) ==================== -->
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -127,7 +126,7 @@
             font-weight: 900;
             text-align: center;
             letter-spacing: -1px;
-            text-shadow: 0 2px 15px rgba(0,0,0,.9);
+            text-shadow: 0 2px 15px rgba(0,0,0,0.9);
         }
 
         .benefits-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -251,7 +250,7 @@
             </div>
         </div>
 
-        <!-- === VÍDEO PRINCIPAL COM A FOTO QUE VOCÊ PEDIU === -->
+        <!-- === VÍDEO PRINCIPAL COM A FOTO QUE VOCÊ PEDIU (só altere o link abaixo) === -->
         <div class="post-card" style="margin-bottom: 1.5rem;">
             <div id="video-container-main" class="post-video-container" style="aspect-ratio: 9 / 16; 
                  background-image: url('https://files.catbox.moe/3aq7xl.png'); 
@@ -297,60 +296,17 @@
         </div>
     </footer>
 
-    <!-- ==================== SCRIPT PRINCIPAL COM EVENTOS DO META PIXEL ==================== -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const overlay = document.getElementById('video-overlay');
             const mainVideo = document.getElementById('main-video');
             const container = document.getElementById('video-container-main');
 
-            // ViewContent - quando clica no vídeo teaser
             overlay.addEventListener('click', () => {
                 overlay.style.display = 'none';
                 container.style.backgroundImage = 'none';
                 mainVideo.style.display = 'block';
                 mainVideo.play();
-
-                fbq('track', 'ViewContent', {
-                    content_name: 'Vídeo Teaser VIP Bella Castro',
-                    content_category: 'video',
-                    content_type: 'product'
-                });
-            });
-
-            // AddToCart + InitiateCheckout nos 3 planos
-            const subscriptionLinks = document.querySelectorAll('.subscription-link');
-            subscriptionLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    const buttonText = link.querySelector('button').innerText.trim();
-                    let contentName = 'Pack VIP';
-                    let value = 0;
-
-                    if (buttonText.includes('40 VÍDEOS')) {
-                        contentName = 'PACK 40 VÍDEOS';
-                        value = 19.90;
-                    } else if (buttonText.includes('20 VÍDEOS')) {
-                        contentName = 'PACK 20 VÍDEOS';
-                        value = 9.90;
-                    } else if (buttonText.includes('ACESSO PERMANENTE')) {
-                        contentName = 'ACESSO PERMANENTE';
-                        value = 39.90;
-                    }
-
-                    fbq('track', 'AddToCart', {
-                        content_name: contentName,
-                        content_category: 'digital_product',
-                        value: value,
-                        currency: 'BRL',
-                        content_type: 'product'
-                    });
-
-                    fbq('track', 'InitiateCheckout', {
-                        content_name: contentName,
-                        value: value,
-                        currency: 'BRL'
-                    });
-                });
             });
 
             // Autoplay dos vídeos da grade
